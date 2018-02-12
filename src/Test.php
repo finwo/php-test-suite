@@ -4,25 +4,28 @@ namespace Finwo\TestSuite;
 
 class Test {
     protected $depth = 0;
+    protected static $max_depth = 76;
 
     protected function success() {
         if ( $this->depth === 0 ) echo PHP_EOL, '  ';
         echo '.';
         flush();
-        $this->depth = ($this->depth+1)%20;
+        $this->depth = ($this->depth+1) % self::$max_depth;
     }
 
     protected function fail( $failure = null ) {
         if ( $this->depth === 0 ) echo PHP_EOL, '  ';
         echo 'F';
         flush();
-        $this->depth = ($this->depth+1)%20;
+        $this->depth = ($this->depth+1) % self::$max_depth;
         array_push(Suite::$fails, $failure);
     }
 
     public function __construct( $name ) {
         Suite::$tests++;
         echo PHP_EOL, PHP_EOL, $name, ':';
+        $width = getenv('COLUMNS');
+        if ( $width ) { self::$max_depth = $width - 4; }
     }
 
     /**
