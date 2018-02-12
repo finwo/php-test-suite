@@ -30,12 +30,11 @@ class Suite {
      *
      * @param string $name
      *
-     * @return Test
-     * @throws \Exception
+     * @return Test|null
      */
     public static function test( $name ) {
         self::ensureApproot();
-        if(!is_string($name)) throw new \Exception('Given name is not a string');
+        if(!is_string($name)) return null;
         if (!self::$tests) {
 
             // Init message

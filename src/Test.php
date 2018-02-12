@@ -22,7 +22,7 @@ class Test {
 
     public function __construct( $name ) {
         Suite::$tests++;
-        echo PHP_EOL, PHP_EOL, $name, ':', PHP_EOL;
+        echo PHP_EOL, PHP_EOL, $name, ':';
     }
 
     /**
