@@ -24,7 +24,8 @@ class Test {
     public function __construct( $name ) {
         Suite::$tests++;
         echo PHP_EOL, PHP_EOL, $name, ':';
-        $width = getenv('COLUMNS');
+        $width = intval(exec('tput cols'));
+        $width = $width ? $width : intval(getenv('COLUMNS'));
         if ( $width ) { self::$max_depth = $width - 4; }
     }
 
