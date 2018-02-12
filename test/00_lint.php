@@ -1,7 +1,6 @@
 <?php
 
 use Finwo\TestSuite\Suite;
-use Finwo\TestSuite\Test;
 
 // Check all php files for syntax errors
 
